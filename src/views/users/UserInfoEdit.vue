@@ -1,8 +1,7 @@
 <template>
     <div class="edit-wrapper">
-      <el-card shadow="hover" class="card">
+      <el-card shadow="hover">
         <h1>修改用户信息</h1>
-        <br/>
         <el-row>
           <el-col :span="15"><p>当前用户的ID：{{ userData.id }}</p></el-col>
           <el-col :span="6">
@@ -10,7 +9,6 @@
               size="small"
               @click = "changePasswd">修改密码</el-button></el-col>
         </el-row>
-        <br/>
         <div class="form">
         <el-row>
           <el-form ref="userData" :model="userData" :rules="rules" label-width="150px">
@@ -41,26 +39,31 @@
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
 import axios from 'axios';
-import UserChangePasswd from '@/components/UserChangePasswd.vue';
-// import UserForm from '@/views/UserForm.vue';
+import UserChangePasswd from './components/UserChangePasswd.vue';
+
 @Component({
   components: { UserChangePasswd },
 })
 export default class UserInfoEdit extends Vue {
-  dialogVisible: boolean = false;
+  public dialogVisible: boolean = false;
 
-  originPassword: string = '';
+  public originPassword: string = '';
 
-  id: string = '';
+  public id: string = '';
 
-  userData = {
+  public userData = {
     id: '',
     password: '',
     email: '',
     phoneNumber: '',
   };
 
-  validateEmail(rule: any, value: string, callback: any) {
+  public rules = {
+    email: [{ required: true, validator: this.validateEmail, trigger: 'blur' }],
+    phoneNumber: [{ required: true, validator: this.validatePhone, trigger: 'blur' }],
+  };
+
+  public validateEmail(rule: any, value: string, callback: any) {
     let isEmail: boolean = false;
     const emailReg = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
     isEmail = emailReg.test(value);
@@ -72,7 +75,7 @@ export default class UserInfoEdit extends Vue {
     callback();
   }
 
-  validatePhone(rule:any, value: string, callback: any) {
+  public validatePhone(rule: any, value: string, callback: any) {
     let isTel: boolean = false;
     const telReg = /^[1][3,4,5,7,8][0-9]{9}$/;
     isTel = telReg.test(value);
@@ -84,13 +87,8 @@ export default class UserInfoEdit extends Vue {
     callback();
   }
 
-  rules = {
-    email: [{ required: true, validator: this.validateEmail, trigger: 'blur' }],
-    phoneNumber: [{ required: true, validator: this.validatePhone, trigger: 'blur' }],
-  };
-
-  getUserById(val: string) {
-    axios.get(`http://localhost:3000/users?id=${val}`).then((response) => {
+  public getUserById(val: string) {
+    axios.get(`/user?id=${val}`).then((response) => {
       // console.log(response.data[0].password)
       this.userData = {
         id: response.data[0].id,
@@ -108,7 +106,7 @@ export default class UserInfoEdit extends Vue {
   //       phoneNumber: this.userData.phoneNumber,
   //     };
 
-  submitChange(formName: string) {
+  public submitChange(formName: string) {
     // console.log(this.updateForm.email);
     (this.$refs[formName] as HTMLFormElement).validate((tmp: boolean) => {
       if (tmp) {
@@ -116,7 +114,7 @@ export default class UserInfoEdit extends Vue {
           email: this.userData.email,
           phoneNumber: this.userData.phoneNumber,
         };
-        axios.patch(`http://localhost:3000/users/${this.$route.params.id}`, updateForm)
+        axios.patch(`/user/${this.$route.params.id}`, updateForm)
           .then((response) => {
             this.$router.push({ path: '/users' });
           });
@@ -128,18 +126,18 @@ export default class UserInfoEdit extends Vue {
     });
   }
 
-  cancel() {
+  public cancel() {
     this.$router.push({ path: '/users' });
   }
 
-  changePasswd() {
+  public changePasswd() {
     this.dialogVisible = true;
     this.originPassword = this.userData.password;
     this.id = this.$route.params.id;
     // return this.dialogVisible, this.password;
   }
 
-  created() {
+  public created() {
     this.getUserById(this.$route.params.id);
   }
 }
@@ -148,13 +146,8 @@ export default class UserInfoEdit extends Vue {
 <style lang="stylus">
 .edit-wrapper{
   display flex
-  // width 40%
-  // height 300px
   justify-content center
   margin-top 150px
-}
-.card {
-  height 400px
 }
 
 h1{

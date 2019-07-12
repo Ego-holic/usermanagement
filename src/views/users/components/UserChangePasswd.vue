@@ -46,25 +46,25 @@ import { Vue, Component, Prop } from 'vue-property-decorator';
 import axios from 'axios';
 @Component
 export default class UserChangePasswd extends Vue {
-    @Prop({ type: String, default: '' }) password: string;
+    @Prop({ type: String, default: '' }) public password: string;
 
-    @Prop({ type: Boolean, default: false }) dialogVisible: boolean;
+    @Prop({ type: Boolean, default: false }) public dialogVisible: boolean;
 
-    @Prop({ type: String, default: '' }) id: string;
+    @Prop({ type: String, default: '' }) public id: string;
 
-    passwdForm = {
+    public passwdForm = {
       originPasswd: '',
       newPasswd: '',
       checkPasswd: '',
     };
 
-    rules = {
+    public rules = {
       originPasswd: [{ required: true, validator: this.vaildataOriginPasswd, trigger: 'blur' }],
       newPasswd: [{ required: true, message: '密码不能为空！', trigger: 'blur' }],
       checkPasswd: [{ required: true, validator: this.vaildataCheckPasswd, trigger: 'blur' }],
     };
 
-    vaildataOriginPasswd(rule: any, value: string, callback: any) {
+    public vaildataOriginPasswd(rule: any, value: string, callback: any) {
       // console.log(this.password);
       if (value !== this.password) {
         callback(new Error('密码不正确！'));
@@ -73,7 +73,7 @@ export default class UserChangePasswd extends Vue {
       }
     }
 
-    vaildataCheckPasswd(rule: any, value: string, callback: any) {
+    public vaildataCheckPasswd(rule: any, value: string, callback: any) {
       const tmp = this.passwdForm.newPasswd;
       if (value !== tmp) {
         callback(new Error('两次输入的密码不一致！'));
@@ -81,13 +81,13 @@ export default class UserChangePasswd extends Vue {
       callback();
     }
 
-    submitChange(formName: string) {
+    public submitChange(formName: string) {
       (this.$refs[formName] as HTMLFormElement).validate((tmp: boolean) => {
         if (tmp) {
           const updateForm = {
             password: this.passwdForm.newPasswd,
           };
-          axios.patch(`http://localhost:3000/users/${this.id}`, updateForm)
+          axios.patch(`/user/${this.id}`, updateForm)
             .then((response) => {
               this.$router.push({ path: '/useredit/+id' });
               this.dialogVisible = false;
@@ -96,10 +96,6 @@ export default class UserChangePasswd extends Vue {
           this.$alert('请输入正确的信息！');
         }
       });
-    }
-
-    destroyed() {
-      
     }
 }
 </script>

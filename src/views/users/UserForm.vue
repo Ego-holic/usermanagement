@@ -1,7 +1,5 @@
 <template>
-
   <div class="label">
-      <!-- <h1 justify="center">用户列表</h1> -->
       <div class="table_wrapper">
           <el-table
             :data="userData"
@@ -67,57 +65,62 @@
       </div>
       <UserAssginRole
         :visibleAssginRole= "visibleAssginRole"
-        :id= "id"
-        />
+        :id= "id"/>
   </div>
-
 </template>
 <script lang='ts'>
 import { Vue, Component, Emit } from 'vue-property-decorator';
 import axios from 'axios';
 import UserAssginRole from './components/UserAssginRole.vue';
-
+axios.defaults.baseURL = '/test'
 @Component({
   components: { UserAssginRole },
 })
 export default class UserForm extends Vue {
-    userData = [];
+    public userData = [];
 
-    totalData = [];
+    public totalData = [];
 
-    total = 0;
+    public total = 0;
 
-    currentPage = 1;
+    public currentPage = 1;
 
-    pageSize = 10;
+    public pageSize = 10;
 
-    visibleAssginRole: boolean = false;
+    public visibleAssginRole: boolean = false;
 
-    id: string = '';
+    public id: string = '';
 
-    addUser() {
-      this.$router.push({ path: '/useradd' });
+    public addUser() {
+      this.$router.push({ path:'/users/add' });
     }
 
-    editUser(val :string) {
+    public editUser(val: string) {
       // console.log(this.$router)
       this.$router.push({ name: 'useredit', params: { id: val } });
     }
 
-    assignRoles(val: string) {
+    public assignRoles(val: string) {
       // this.$router.push({name: 'assignroles', params:{id: val}});
       this.visibleAssginRole = true;
       this.id = val;
     }
 
-    userList() {
-      axios.get('http://localhost:3000/users')
+    public userList() {
+      console.log('获取列表')
+      axios.get('/users',{
+        params: {
+          page:1,
+          size:10
+        }
+      })
         .then((response) => {
           this.getUsersData(response);
+          console.log(response);
         });
     }
 
-    getUsersData(response: any) {
+    public getUsersData(response: any) {
       const request = response.data;
       this.totalData = request;
       const argCurrent = this.currentPage;
@@ -126,15 +129,15 @@ export default class UserForm extends Vue {
       this.total = request.length;
     }
 
-    handleCurrentChange(val: number) {
+    public handleCurrentChange(val: number) {
       this.currentPage = val;
       const argCurrent = this.currentPage;
       const argSize = this.pageSize;
       this.userData = this.totalData.slice((argCurrent - 1) * argSize, argCurrent * argSize);
     }
 
-    delUserInfo(val: string) {
-      axios.delete(`http://localhost:3000/users/${val}`).then(
+    public delUserInfo(val: string) {
+      axios.delete(`/user/${val}`).then(
         (response) => {
           this.$message({
             type: 'success',
@@ -144,7 +147,7 @@ export default class UserForm extends Vue {
       );
     }
 
-    deleteUser(val: string) {
+    public deleteUser(val: string) {
       this.$confirm('确认要删除该用户吗?', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
@@ -160,17 +163,14 @@ export default class UserForm extends Vue {
       });
     }
 
-    created() {
+    public created() {
       this.userList();
     }
 }
 </script>
 <style lang="stylus">
-    h1{
-        display flex
-        justify-content center
-    }
     .table_wrapper{
+        padding-top 20px
         width 90%
         position relative
         left 70px

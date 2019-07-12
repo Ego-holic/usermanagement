@@ -11,6 +11,7 @@ export function get<ReqT, ResT>(url: string, reqData?: ReqT, config?: any) {
   }
   return new Promise(((resolve: (resData: ResT) => any, reject) => {
     http.get(`${url}?${qs.stringify(params)}`, config).then((resData: AxiosResponse<ResT>) => {
+      console.log(resData)
       resolve(resData.data);
     }).catch((resData) => {
       reject(resData);

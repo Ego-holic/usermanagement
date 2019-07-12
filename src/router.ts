@@ -30,9 +30,16 @@ export default new Router({
       props: true,
     },
     {
-      path: '/useredit/:id',
+      path: '/users/edit/:id',
       name: 'useredit',
       component: () => import('@/views/users/UserInfoEdit.vue'),
+      props: true,
+    },
+    {
+      path: '/users/add',
+      name: 'useradd',
+      component: () => import('@/views/users/UserAdd.vue'),
+      props: true
     },
   ],
 });
