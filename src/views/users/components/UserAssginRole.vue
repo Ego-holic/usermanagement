@@ -4,14 +4,19 @@
             <div class="header">
                 <span>已经分配的角色</span>
                 <el-tag
+				hit="true"
+				effect="light"
+				type="success"
 				v-for="(item, index) in usersRoles"
 				:key="index"
 				closable
 				@close="removeTag(index)">{{item}}</el-tag>
             </div>
+			<hr class="line"/>
             <div class="footer">
                 <span>未分配的角色</span>
                 <el-tag
+				hit="true"
 				v-for="(item, index) in rolesArr"
 				:key="index"
                 @click="addTag(index)">{{item.name}}</el-tag>
@@ -22,9 +27,7 @@
 
 <script lang="ts">
 import axios from 'axios';
-import {
-  Prop, Component, Vue, Watch,
-} from 'vue-property-decorator';
+import {Prop, Component, Vue, Watch,} from 'vue-property-decorator';
 
 @Component
 export default class UserAssginRole extends Vue {
@@ -103,5 +106,15 @@ watchIdChange(val: string) {
 	created() {
 	  this.getRoles();
 	}
+
 }
 </script>
+<style>
+.line {
+	size:3px;
+	width:100%;
+	color:SkyBlue;
+	opacity:0.3;
+}
+</style>
+

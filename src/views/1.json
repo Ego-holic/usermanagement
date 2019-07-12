@@ -1,0 +1,165 @@
+{
+  "users": [
+    {
+      "roleNames": [
+        "app1role1"
+      ],
+      "id": "1",
+      "userName": "",
+      "email": "",
+      "phoneNumber": ""
+    },
+    {
+      "roleNames": [
+        "app2role2",
+        "app2role3",
+        "app3role1",
+        "app2role1",
+        "app2role2"
+      ],
+      "id": "2",
+      "userName": "BBB",
+      "email": "bbb@b.com",
+      "phoneNumber": "13812345678"
+    },
+    {
+      "roleNames": [
+        "app1role1",
+        "app1role2",
+        "app2role3",
+        "app2role1",
+        "app2role2"
+      ],
+      "id": "3",
+      "userName": "",
+      "email": "",
+      "phoneNumber": ""
+    },
+    {
+      "roleNames": [
+        "app4role3"
+      ],
+      "id": "4",
+      "userName": "",
+      "email": "",
+      "phoneNumber": ""
+    },
+    {
+      "roleNames": [
+        "app2role2"
+      ],
+      "id": "5",
+      "userName": "EEE",
+      "email": "eee@e.com",
+      "phoneNumber": "13512345678"
+    },
+    {
+      "roleNames": [
+        "app2role3"
+      ],
+      "id": "6",
+      "userName": "FFF",
+      "email": "fff@f.com",
+      "phoneNumber": "13412345678"
+    },
+    {
+      "roleNames": [
+        "app3role1"
+      ],
+      "id": "7",
+      "userName": "GGG",
+      "email": "ggg@g.com",
+      "phoneNumber": "18012345678"
+    },
+    {
+      "roleNames": [
+        "app3role2"
+      ],
+      "id": "8",
+      "userName": "HHH",
+      "email": "hhh@h.com",
+      "phoneNumber": "18112345678"
+    },
+    {
+      "roleNames": [
+        "app3role3"
+      ],
+      "id": "9",
+      "userName": "III",
+      "email": "iii@i.com",
+      "phoneNumber": "18212345678"
+    },
+    {
+      "roleNames": [
+        "app4role1"
+      ],
+      "id": "10",
+      "userName": "JJJ",
+      "email": "jjj@j.com",
+      "phoneNumber": "18312345678"
+    },
+    {
+      "roleNames": [
+        "app4role2"
+      ],
+      "id": "11",
+      "userName": "KKK",
+      "email": "kkk@k.com",
+      "phoneNumber": "18612345678"
+    },
+    {
+      "roleNames": [
+        "app4role3"
+      ],
+      "id": "12",
+      "userName": "LLL",
+      "email": "lll@l.com",
+      "phoneNumber": "18812345678"
+    },
+    {
+      "userName": "1",
+      "password": "111111",
+      "email": "1111@1.com",
+      "phoneNumber": "18122222222",
+      "id": "lnNbHUb"
+    }
+  ],
+  "roles": [
+    {
+      "name": "app1role1"
+    },
+    {
+      "name": "app1role2"
+    },
+    {
+      "name": "app2role3"
+    },
+    {
+      "name": "app2role1"
+    },
+    {
+      "name": "app2role2"
+    },
+    {
+      "name": "app2role3"
+    },
+    {
+      "name": "app3role1"
+    },
+    {
+      "name": "app3role2"
+    },
+    {
+      "name": "app3role3"
+    },
+    {
+      "name": "app4role1"
+    },
+    {
+      "name": "app4role2"
+    },
+    {
+      "name": "app4role3"
+    }
+  ]
+}

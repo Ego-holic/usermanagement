@@ -24,25 +24,15 @@ export default new Router({
       props: true,
     },
     {
-      path: '/personal',
-      name: 'personalusers',
-      component: () => import('@/views/personalusers/Personalusers.vue'),
+      path: '/users',
+      name: 'usersForm',
+      component: () => import('@/views/users/UserForm.vue'),
       props: true,
     },
     {
-      path: '/change',
-      name: 'changepassword',
-      component: () => import('@/views/users/ChangePassword.vue'),
-      props: true,
+      path: '/useredit/:id',
+      name: 'useredit',
+      component: () => import('@/views/users/UserInfoEdit.vue'),
     },
-
-    // {
-    //   path: '/about',
-    //   name: 'about',
-    //   // route level code-splitting
-    //   // this generates a separate chunk (about.[hash].js) for this route
-    //   // which is lazy-loaded when the route is visited.
-    //   component: () => import(/* webpackChunkName: "about" */ './views/About.vue'),
-    // },
   ],
 });

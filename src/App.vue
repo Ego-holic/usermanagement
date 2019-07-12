@@ -3,23 +3,24 @@
     <el-container class="container">
       <el-header class="header">
         <el-menu :default-active="activeIndex" mode="horizontal" 
-        background-color="#006699" text-color="	#55ddff" active-text-color="#ddff99" 
-        align="center">
-          <el-menu-item><p>后台认证管理</p></el-menu-item>
-          <el-menu-item><el-image 
+        background-color="#009999" text-color="	#ffffff" active-text-color="#ddff99" 
+        align="center" style="height:100%">
+        <el-row>
+          <el-col :span="3"><el-menu-item><p>后台认证管理</p></el-menu-item></el-col>
+          <el-col :span="2"><el-menu-item><el-image 
           :src="flightUrl" 
-          class="image"
-          ></el-image></el-menu-item>
-          <el-menu-item index="2"><el-link  target="_self">首页</el-link></el-menu-item>
-          <el-menu-item index="3"><el-link>APP管理</el-link></el-menu-item>
-          <el-menu-item index="4"><el-link>User列表</el-link></el-menu-item>
-          <el-menu-item index="5"><el-link>登录</el-link></el-menu-item>          
+          class="image">
+          </el-image></el-menu-item></el-col>
+          <el-col :span="2"><el-menu-item ><el-link>首页</el-link></el-menu-item></el-col>
+          <el-col :span="2"><el-menu-item ><el-link href="#/applications">APP管理</el-link></el-menu-item></el-col>
+          <el-col :span="2"><el-menu-item ><el-link href="#/users">User列表</el-link></el-menu-item></el-col>
+          <el-col :span="11"><el-menu-item></el-menu-item></el-col>
+          <el-col :span="2"><el-menu-item ><el-link>登录</el-link></el-menu-item></el-col>    
+          </el-row>      
         </el-menu>
-        <div class="line"></div>
       </el-header>
       <!-- <el-main>
       </el-main> -->
-      <!-- <el-footer>Copyright ©2019 Powered By 航科院中宇 (北京) 新技术发展有限公司 Version 1.0.0</el-footer> -->
     </el-container>
     <router-view style="height: calc(100% - 80px)"/>
       <p class="router">Copyright ©2019 Powered By 航科院中宇 (北京) 新技术发展有限公司 Version 1.0.0</p>
@@ -37,7 +38,7 @@ export default class App extends Vue {
 <style lang="stylus">
 #app {
   height 100%;
-  background-color rgba(55, 55, 55, 0.8)
+  background-color white
 }
 .header {
   padding 0 0 0 0 
@@ -52,13 +53,13 @@ export default class App extends Vue {
   // background-color rgba(255, 255, 255, 0.1);
   font-size 12px;
 }
-// .login5 {
-//   display flex
-//   justify-content flex-end
 .image{
-  width 50%
+  width 90%
   height 100%
   padding 0 0 0 0
+}
+el-link{
+  color #ffffff
 }
 // }
 </style>

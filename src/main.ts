@@ -4,6 +4,8 @@ import 'element-ui/lib/theme-chalk/index.css';
 import App from './App.vue';
 import router from './router';
 import store from './store';
+import axios from 'axios';
+import vueaxios from 'vue-axios'; 
 import '@/style/reset.css';
 
 Vue.config.productionTip = false;

@@ -49,14 +49,14 @@
               "
               >编辑</el-button
             >
-            <el-button 
+            
+            <!-- <el-button 
             tyle="padding: 3px 0;color:#67C23A"
             type="text"
             icon="el-icon-view"
             @click="onCheckUsers"            
             >查看用户列表
-            </el-button>
-
+            </el-button> -->
 
           </template>
         </el-table-column>

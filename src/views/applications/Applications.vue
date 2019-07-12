@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper" v-loading="isLoading">
+  <el-main class="wrapper" v-loading="isLoading">
     <div class="list_wrapper">
       <Application
         v-for="application in applications"
@@ -28,7 +28,7 @@
       :operateType="currentOperateApplicationType"
       @operate-success="onOperateSuccess"
     />
-  </div>
+  </el-main>
 </template>
 
 <script lang="ts">
@@ -112,6 +112,8 @@ export default class Applications extends Mixins(UtilMixin) {
 <style lang="scss" scoped>
 .wrapper {
   background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
+  width: 100%;
+  height: 100%;
 }
 .list_wrapper {
   height: calc(100% - 60px);
